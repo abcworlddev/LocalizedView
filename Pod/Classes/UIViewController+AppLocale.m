@@ -24,7 +24,11 @@ static void * SetupLocalizedStringWithKeyPropertKey = &SetupLocalizedStringWithK
 }
 
 - (void)setUpLocalizationString{
+    
     if ([self respondsToSelector:@selector(isSetupLocaleByXib)] && self.isSetupLocaleByXib) {
+        
+        [self setUpLocalizationStringForObject:self.navigationItem];
+        
         for (UIView *subview in self.view.subviews) {
             [self setUpLocalizationStringForView:subview];
         }
@@ -39,4 +43,7 @@ static void * SetupLocalizedStringWithKeyPropertKey = &SetupLocalizedStringWithK
     }
 }
 
+- (void)setUpLocalizationStringForObject:(NSObject *)aObject {
+    [aObject setLocalizedString];
+}
 @end
